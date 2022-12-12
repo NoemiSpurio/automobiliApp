@@ -10,11 +10,19 @@ import { AutomobileService } from '../automobile.service';
 export class AutomobileEditComponent implements OnChanges{
 
   @Input() idAutomobile?: number;
-  automobile?: Automobile;
+  automobile: Automobile = {id:0, marca:"", modello:"", cilindrata: 0};
+  automobileBind?: Automobile;
   @Output() notify = new EventEmitter<number>();
 
   ngOnChanges(changes: SimpleChanges) {
-      this.automobile = this.automobileService.findById(this.idAutomobile);
+      this.automobileBind = this.automobileService.findById(this.idAutomobile);
+      if(this.automobileBind){
+        this.automobile.id = this.automobileBind.id;
+        this.automobile.marca = this.automobileBind.marca;
+        this.automobile.modello = this.automobileBind.modello;
+        this.automobile.cilindrata = this.automobileBind.cilindrata;
+      }
+
   }
 
   modifica(): void {
