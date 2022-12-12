@@ -1,0 +1,62 @@
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+
+
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Lista dei risultati</h5>
+            </div>
+            <div class='card-body'>
+                <a class="btn btn-primary " (click)="insertNew(true)">Add New</a>
+
+                <div class='table-responsive'>
+                    <table class='table table-hover '>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Marca</th>
+                                <th>Modello</th>
+                                <th>Cilindrata</th>
+                                <th>Azioni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let automobileItem of listaAutomobili">
+                                <td>{{automobileItem.id}}</td>
+                                <td>{{automobileItem.marca}}</td>
+                                <td>{{automobileItem.modello}}</td>
+                                <td>{{automobileItem.cilindrata}}</td>
+                                <td><button
+                                        class="btn  btn-sm btn-outline-{{automobileItem.id===selectedAutomobile?'secondary':'primary'}}"
+                                        (click)="selectAutomobile(automobileItem.id)">{{automobileItem.id===selectedAutomobile?'Nascondi':'Visualizza'}}</button>
+
+                                    <button class="btn  btn-sm btn-outline-danger"
+                                        (click)="selectAutomobileToDelete(automobileItem.id)">Delete</button>
+
+                                    <button class="btn  btn-sm btn-outline-warning"
+                                        (click)="selectAutomobileEdit(automobileItem.id)">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+        <br>
+        <app-automobile-detail [idAutomobile]="selectedAutomobile" (notify)="selectAutomobile($event)"
+            *ngIf="componentToShow == 1"></app-automobile-detail>
+        <br>
+        <app-automobile-create [condition]="insertNewCondition" (notify)="insertNew($event)"
+            *ngIf="componentToShow == 2"></app-automobile-create>
+        <br>
+        <app-automobile-delete [idAutomobile]="idAutomobileToDelete" (notify)="selectComponent($event)"
+            *ngIf="componentToShow == 3"></app-automobile-delete>
+        <br>
+        <app-automobile-edit [idAutomobile]="idAutomobileToEdit" (notify)="selectComponent($event)" *ngIf="componentToShow == 4"></app-automobile-edit>
+        <!-- end container -->
+    </div>
+</main>

@@ -1,0 +1,26 @@
+<div class='card' *ngIf="automobile">
+    <div class='card-header'>
+        Sicuro di voler eliminare questa automobile?
+    </div>
+    <div class='card-body'>
+        <dl class="row">
+            <dt class="col-sm-3 text-right">Id:</dt>
+            <dd class="col-sm-9">{{automobile.id}}</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3 text-right">Marca:</dt>
+            <dd class="col-sm-9">{{automobile.marca}}</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3 text-right">Modello:</dt>
+            <dd class="col-sm-9">{{automobile.modello}}</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3 text-right">Cilindrata:</dt>
+            <dd class="col-sm-9">{{automobile.cilindrata}}</dd>
+        </dl>
+        <dl>
+            <button class="btn  btn-sm btn-outline-danger" (click)="delete()">Conferma</button>
+        </dl>
+    </div>
+</div>

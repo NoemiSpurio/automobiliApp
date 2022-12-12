@@ -1,0 +1,23 @@
+<div class='card' *ngIf="condition">
+    <div class='card-header'>
+        Inserisci nuova automobile
+    </div>
+    <div class='card-body'>
+        <dl class="row">
+            <dt class="col-sm-3 text-right">Marca:</dt>
+            <input class="col-sm-9" type="text" [(ngModel)]="automobile.marca">
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3 text-right">Modello:</dt>
+            <input class="col-sm-9" type="text" [(ngModel)]="automobile.modello">
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3 text-right">Cilindrata:</dt>
+            <input class="col-sm-9" type="number" [(ngModel)]="automobile.cilindrata">
+        </dl>
+        <dl>
+            <button class="btn btn-sm btn-outline-secondary" (click)="inserisciNuovo()">Inserisci</button>
+            <button class="btn btn-sm btn-outline-secondary" (click)="nascondi()">Nascondi</button>
+        </dl>
+    </div>
+</div>
